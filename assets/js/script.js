@@ -3,7 +3,7 @@ var searchBox = document.getElementById("search-box")
 
 searchBtn.addEventListener("click", function(event) {
     event.preventDefault();
-    console.log(event)
+
     var city = searchBox.value.trim()
     console.log(city);
 
@@ -15,7 +15,13 @@ searchBtn.addEventListener("click", function(event) {
     var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
     
     fetch(queryURL)
-    //fetch!
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            console.log(data)
+        })
+    //it works!
     //target and update html with data
 }
 )
