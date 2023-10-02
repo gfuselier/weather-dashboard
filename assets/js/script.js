@@ -46,17 +46,18 @@ searchBtn.addEventListener("click", function(event) {
             wind.textContent = "Wind: " + data.wind.speed + " MPH"
             humidity.textContent = "Humidity: " + data.main.humidity + "%"
 
-            var lat = data.coord.lat
-            var lon = data.coord.lon
-            var fiveDayUrl =  "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + APIKey + "&units=imperial";
-            //second fetch gets five-day forecast
-            fetch(fiveDayUrl)
-                .then(function(result) {
-                    return result.json();
-                })
-                .then (function(data) {
-                    console.log(data)
-                })
+        var lat = data.coord.lat
+        var lon = data.coord.lon
+        var fiveDayUrl =  "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + APIKey + "&units=imperial";
+        //second fetch gets five-day forecast
+        fetch(fiveDayUrl)
+            .then(function(result) {
+                return result.json();
+            })
+            .then (function(data) {
+                console.log(data)
+                
+            })
         });
 
     
