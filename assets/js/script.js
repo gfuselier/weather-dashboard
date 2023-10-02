@@ -37,25 +37,28 @@ searchBtn.addEventListener("click", function(event) {
         .then(function(data) {
             console.log(data)
 
+            cityName.textContent = city + " (" + dayjs().format("MM/DD/YY") + ")"
             var iconCode = data.weather[0].icon
             var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png"
-            cityName.textContent = city + " (" + dayjs().format("MM/DD/YY") + ")"
             weatherIcon.setAttribute("src", iconUrl)
 
             temp.textContent = "Temp: " + data.main.temp + "°F"
             wind.textContent = "Wind: " + data.wind.speed + " MPH"
             humidity.textContent = "Humidity: " + data.main.humidity + "%"
 
+        //second fetch gets five-day forecast
         var lat = data.coord.lat
         var lon = data.coord.lon
         var fiveDayUrl =  "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + APIKey + "&units=imperial";
-        //second fetch gets five-day forecast
+        
         fetch(fiveDayUrl)
             .then(function(result) {
                 return result.json();
             })
             .then (function(data) {
                 console.log(data)
+
+                //dynamically creates a card for one day of the forecast
                 var date1 = data.list[3].dt_txt.split(" ")[0]
                 var day1 = dayjs(date1).format("MM/DD/YY")
 
@@ -63,15 +66,26 @@ searchBtn.addEventListener("click", function(event) {
                 card.setAttribute("class", "card")
                 var h4 = document.createElement("h4")
                 h4.textContent = day1
+
                 var icon = document.createElement("img") 
                 var iconCode = data.list[3].weather[0].icon
                 var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png"
                 icon.setAttribute("src", iconUrl)
                 icon.style.height = "50px"
                 icon.style.width = "50px"
-                // var temperature = document.createElement("p")
+
+                var temp = document.createElement("p")
+                temp.textContent = "Temp: " + data.list[3].main.temp + "°F"
+                var wind = document.createElement("p")
+                wind.textContent = "Wind: " + data.list[3].wind.speed + " MPH"
+                var humidity = document.createElement("p")
+                humidity.textContent = "Humidity: " + data.list[3].main.humidity + "%"
+
                 card.appendChild(h4)
                 card.appendChild(icon)
+                card.appendChild(temp)
+                card.appendChild(wind)
+                card.appendChild(humidity)
                 fiveDayForecast.appendChild(card)
             })
         });
