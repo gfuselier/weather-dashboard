@@ -10,26 +10,26 @@ var humidity = document.getElementById("humidity");
 var fiveDayForecast = document.getElementById("five-day");
 var searchHistory = JSON.parse(localStorage.getItem("cities")) || [];
 
+//makes city history list items on page load
 function pageLoad() {
-if (searchHistory.length) {
-    for (i=0; i < searchHistory.length; i++) {
-        var searchedCity = document.createElement("li");
-        searchedCity.textContent = searchHistory[i];
-        searchedCity.onclick = listItemSearch
-        cityHistory.appendChild(searchedCity);
+    if (searchHistory.length) {
+        for (i=0; i < searchHistory.length; i++) {
+            var searchedCity = document.createElement("li");
+            searchedCity.textContent = searchHistory[i];
+            searchedCity.onclick = listItemSearch
+            cityHistory.appendChild(searchedCity);
+        }
     }
-}
 }
 
 pageLoad();
+
 //adds event listener to search button
 searchBtn.addEventListener("click", function (event) {
   event.preventDefault();
-
   var city = searchBox.value.trim();
 
   //stores the search history
-  
   if (!searchHistory.includes(city)) {
     searchHistory.push(city);
     localStorage.setItem("cities", JSON.stringify(searchHistory));
@@ -44,7 +44,11 @@ searchBtn.addEventListener("click", function (event) {
   getWeather(city);
 });
 
-//click on history and get the data again
+function listItemSearch() {
+    console.log(this) //this is the list item that the user clicked on
+    var clickedCity = this.textContent
+    getWeather(clickedCity)
+}
 
 function getWeather(city) {
   //makes url for the first fetch
@@ -64,6 +68,7 @@ function getWeather(city) {
     .then(function (data) {
       console.log(data);
 
+      //puts data in the feature box
       cityName.textContent = city + " (" + dayjs().format("MM/DD/YY") + ")";
       var iconCode = data.weather[0].icon;
       var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png";
@@ -94,7 +99,7 @@ function getWeather(city) {
           fiveDayForecast.innerHTML = ""
           for (var i = 0; i < data.list.length; i++) {
             if (data.list[i].dt_txt.includes("12:00:00")) {
-              //dynamically creates a card for one day of the forecast
+              //dynamically creates a card for each day of the forecast
               var date1 = data.list[i].dt_txt.split(" ")[0];
               var day1 = dayjs(date1).format("MM/DD/YY");
 
@@ -131,9 +136,4 @@ function getWeather(city) {
     });
 }
 
-function listItemSearch() {
-    console.log(this)
-    var clickedCity = this.textContent
-    console.log(clickedCity)
-    getWeather(clickedCity)
-}
+
