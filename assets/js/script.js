@@ -27,6 +27,7 @@ searchBtn.addEventListener("click", function(event) {
         })
         .then(function(data) {
             console.log(data)
+            cityName.textContent = city + " (" + dayjs().format("MM/DD/YY") + ")"
             temp.textContent = "Temp: " + data.main.temp + "°F"
             wind.textContent = "Wind: " + data.wind.speed + " MPH"
             humidity.textContent = "Humidity: " + data.main.humidity + "%"
