@@ -56,7 +56,23 @@ searchBtn.addEventListener("click", function(event) {
             })
             .then (function(data) {
                 console.log(data)
-                
+                var date1 = data.list[3].dt_txt.split(" ")[0]
+                var day1 = dayjs(date1).format("MM/DD/YY")
+
+                var card = document.createElement("div")
+                card.setAttribute("class", "card")
+                var h4 = document.createElement("h4")
+                h4.textContent = day1
+                var icon = document.createElement("img") 
+                var iconCode = data.list[3].weather[0].icon
+                var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png"
+                icon.setAttribute("src", iconUrl)
+                icon.style.height = "50px"
+                icon.style.width = "50px"
+                // var temperature = document.createElement("p")
+                card.appendChild(h4)
+                card.appendChild(icon)
+                fiveDayForecast.appendChild(card)
             })
         });
 
