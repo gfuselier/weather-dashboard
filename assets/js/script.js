@@ -19,6 +19,10 @@ searchBtn.addEventListener("click", function(event) {
     searchHistory.push(city)
     localStorage.setItem("cities",JSON.stringify(searchHistory))
 
+    var searchedCity = document.createElement("li")
+    searchedCity.textContent = city
+    cityHistory.appendChild(searchedCity)
+
     var APIKey = "ddd62cc0a10cf570b502b56b15243447"
     var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=imperial";
     
@@ -33,7 +37,7 @@ searchBtn.addEventListener("click", function(event) {
             var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png"
             cityName.textContent = city + " (" + dayjs().format("MM/DD/YY") + ")"
             weatherIcon.setAttribute("src", iconUrl)
-            
+
             temp.textContent = "Temp: " + data.main.temp + "°F"
             wind.textContent = "Wind: " + data.wind.speed + " MPH"
             humidity.textContent = "Humidity: " + data.main.humidity + "%"
