@@ -9,23 +9,27 @@ var wind = document.getElementById("wind")
 var humidity = document.getElementById("humidity")
 var fiveDayForecast = document.getElementById("five-day")
 
+//adds event listener to search button
 searchBtn.addEventListener("click", function(event) {
     event.preventDefault();
 
     var city = searchBox.value.trim()
-    console.log(city);
 
+    //stores the search history
     var searchHistory = JSON.parse(localStorage.getItem("cities")) || []
     searchHistory.push(city)
     localStorage.setItem("cities",JSON.stringify(searchHistory))
 
+    //adds the searched cities to the history section of the webpage
     var searchedCity = document.createElement("li")
     searchedCity.textContent = city
     cityHistory.appendChild(searchedCity)
 
-    var APIKey = "ddd62cc0a10cf570b502b56b15243447"
+    //makes url for the first fetch
+    var APIKey = "ddd62cc0a10cf570b502b56b15243447";
     var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=imperial";
     
+    //first fetch gets current weather data
     fetch(queryURL)
         .then(function(response) {
             return response.json();
@@ -41,9 +45,10 @@ searchBtn.addEventListener("click", function(event) {
             temp.textContent = "Temp: " + data.main.temp + "°F"
             wind.textContent = "Wind: " + data.wind.speed + " MPH"
             humidity.textContent = "Humidity: " + data.main.humidity + "%"
-        })
-    
-    //target and update html with data
-}
-)
+        });
+
+    var fiveDayUrl =  "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + APIKey + "&units=imperial";
+})
+
+//click on history and get the data again
 
