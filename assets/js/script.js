@@ -3,6 +3,7 @@ var searchBox = document.getElementById("search-box")
 var cityHistory = document.getElementById("city-history")
 var featureBox = document.getElementById("feature-box")
 var cityName = document.getElementById("city-name")
+var weatherIcon = document.getElementById("weather-icon")
 var temp = document.getElementById("temp")
 var wind = document.getElementById("wind")
 var humidity = document.getElementById("humidity")
@@ -27,7 +28,12 @@ searchBtn.addEventListener("click", function(event) {
         })
         .then(function(data) {
             console.log(data)
+
+            var iconCode = data.weather[0].icon
+            var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png"
             cityName.textContent = city + " (" + dayjs().format("MM/DD/YY") + ")"
+            weatherIcon.setAttribute("src", iconUrl)
+            
             temp.textContent = "Temp: " + data.main.temp + "°F"
             wind.textContent = "Wind: " + data.wind.speed + " MPH"
             humidity.textContent = "Humidity: " + data.main.humidity + "%"
