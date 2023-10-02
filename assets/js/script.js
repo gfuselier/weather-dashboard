@@ -50,13 +50,15 @@ searchBtn.addEventListener("click", function(event) {
         var lat = data.coord.lat
         var lon = data.coord.lon
         var fiveDayUrl =  "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + APIKey + "&units=imperial";
-        
+        var timestamps = []
+
         fetch(fiveDayUrl)
             .then(function(result) {
                 return result.json();
             })
             .then (function(data) {
                 console.log(data)
+                
 
                 //dynamically creates a card for one day of the forecast
                 var date1 = data.list[3].dt_txt.split(" ")[0]
