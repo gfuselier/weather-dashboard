@@ -1,0 +1,10 @@
+#city-history {
+    list-style-type: none;
+}
+#city-history li {
+    border: 2px solid black;
+    padding: 5px;
+    margin: 5px;
+    width: 100px;
+    text-align: center;
+}
