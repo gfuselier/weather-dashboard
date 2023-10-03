@@ -97,6 +97,10 @@ function getWeather(city) {
         .then(function (data) {
           console.log(data);
           fiveDayForecast.innerHTML = ""
+          var fiveDayTitle = document.createElement("h3")
+          fiveDayTitle.textContent = "5-Day Forecast:";
+          fiveDayForecast.appendChild(fiveDayTitle);
+
           for (var i = 0; i < data.list.length; i++) {
             if (data.list[i].dt_txt.includes("12:00:00")) {
               //dynamically creates a card for each day of the forecast
@@ -104,7 +108,7 @@ function getWeather(city) {
               var day1 = dayjs(date1).format("MM/DD/YY");
 
               var card = document.createElement("div");
-              card.setAttribute("class", "card");
+              card.setAttribute("class", "card col");
               var h4 = document.createElement("h4");
               h4.textContent = day1;
 
