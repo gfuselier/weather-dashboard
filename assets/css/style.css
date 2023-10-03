@@ -1,10 +1,33 @@
+:root {
+ --dark-blue: #167998;
+ --light-blue: #80b7c8;
+}
+
+header {
+    background-color: var(--dark-blue);
+    color: white;
+    height: 75px;
+}
+
+form {
+    padding: 15px;
+    border-bottom: 5px solid var(--dark-blue);
+}
+
+form .btn {
+    background-color: var(--dark-blue);
+    color: white;
+}
+
 #city-history {
     list-style-type: none;
 }
 #city-history li {
+    background-color: var(--light-blue);
     border: 2px solid black;
+    border-radius: 5px;
     padding: 5px;
-    margin: 5px;
-    width: 100px;
+    margin: 5px 0;
+    width: 100%;
     text-align: center;
 }
