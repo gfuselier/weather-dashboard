@@ -7,6 +7,7 @@ header {
     background-color: var(--dark-blue);
     color: white;
     height: 75px;
+    border-bottom: 3px solid var(--light-blue);
 }
 
 form {
@@ -34,7 +35,14 @@ form .btn {
 
 #feature-box {
     border: 2px solid gray;
+    border-radius: 5px;
+    box-shadow: 2px 2px #167998;
     margin: 15px;
     padding: 5px 15px;
 }
-/* feature box border and margin, card background-color and border, font */
+
+.card {
+    margin: 0 5px;
+    border-color: black;
+    box-shadow: 2px 2px #167998;
+}
