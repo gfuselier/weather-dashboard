@@ -14,28 +14,35 @@
     <header class="navbar navbar-light bg-light">
         <div class="container-fluid">
             <span class="navbar-brand mb-0 h1">Weather Dashboard</span>
-        <!-- <h1>Weather Dashboard</h1> -->
-    </div>
-    </header>
-    <form>
-        <div class="mb-3">
-            <label class="form-label">Search for a city:</label>
-            <input id="search-box" type="input" class="form-control">
         </div>
-        <button id="search-btn" class="btn btn-primary">Search</button>
-    </form>
-    <ul id="city-history">
-    </ul>
-    <div id="feature-box">
-        <h2 id="city-name">City</h2>
-        <img id="weather-icon">
-        <p id="temp">Temp:</p>
-        <p id="wind">Wind:</p>
-        <p id="humidity">Humidity:</p>
-    </div>
-    <div id="five-day">
-        <h3>5-Day Forecast:</h3>
-    </div>
+    </header>
+    <main class="container-fluid min-vh-100">
+        <div class="row">
+            <aside class="col-3">
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label">Search for a city:</label>
+                        <input id="search-box" type="input" class="form-control">
+                    </div>
+                    <button id="search-btn" class="btn btn-primary">Search</button>
+                </form>
+                <ul id="city-history">
+                </ul>
+            </aside>
+            <section class="col-9">
+                <div id="feature-box">
+                    <h2 id="city-name">City</h2>
+                    <img id="weather-icon">
+                    <p id="temp">Temp:</p>
+                    <p id="wind">Wind:</p>
+                    <p id="humidity">Humidity:</p>
+                </div>
+                <div id="five-day">
+                    <h3>5-Day Forecast:</h3>
+                </div>
+            </section>
+        </div>
+    </main>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
         integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
