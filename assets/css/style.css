@@ -32,4 +32,9 @@ form .btn {
     text-align: center;
 }
 
+#feature-box {
+    border: 2px solid gray;
+    margin: 15px;
+    padding: 5px 15px;
+}
 /* feature box border and margin, card background-color and border, font */
