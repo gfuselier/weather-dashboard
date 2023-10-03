@@ -1,6 +1,6 @@
 :root {
- --dark-blue: #167998;
- --light-blue: #80b7c8;
+    --dark-blue: #167998;
+    --light-blue: #80b7c8;
 }
 
 header {
@@ -23,6 +23,7 @@ form .btn {
 #city-history {
     list-style-type: none;
 }
+
 #city-history li {
     background-color: var(--light-blue);
     border: 2px solid black;

@@ -20,6 +20,7 @@
         <div class="row">
             <aside class="col-3 p-3">
                 <div class="row">
+                    <!-- Form section -->
                     <form>
                         <div class="mb-3 col-12">
                             <label class="form-label">Search for a city:</label>
@@ -27,12 +28,14 @@
                         </div>
                         <button id="search-btn" class="btn">Search</button>
                     </form>
+                    <!-- Empty ul for City History once user has searched for a city -->
                     <ul id="city-history" class="col-12">
                     </ul>
                 </div>
             </aside>
             <section class="row col-9 p-3">
                 <div class="row col-12">
+                    <!-- Feature box will show the current weather data -->
                     <div id="feature-box" class="">
                         <h2 id="city-name">City</h2>
                         <img id="weather-icon">
@@ -40,6 +43,7 @@
                         <p id="wind">Wind:</p>
                         <p id="humidity">Humidity:</p>
                     </div>
+                    <!-- 5 Day Forecast will show the future weather data -->
                     <div id="five-day" class="row">
                         <h3>5-Day Forecast:</h3>
                     </div>
