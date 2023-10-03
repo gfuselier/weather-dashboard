@@ -54,7 +54,7 @@ function getWeather(city) {
     //makes url for the first fetch
     var APIKey = "ddd62cc0a10cf570b502b56b15243447";
     var queryURL =
-        "http://api.openweathermap.org/data/2.5/weather?q=" +
+        "https://api.openweathermap.org/data/2.5/weather?q=" +
         city +
         "&appid=" +
         APIKey +
@@ -71,7 +71,7 @@ function getWeather(city) {
             //puts data in the feature box
             cityName.textContent = city + " (" + dayjs().format("MM/DD/YY") + ")";
             var iconCode = data.weather[0].icon;
-            var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png";
+            var iconUrl = "https://openweathermap.org/img/w/" + iconCode + ".png";
             weatherIcon.setAttribute("src", iconUrl);
 
             temp.textContent = "Temp: " + data.main.temp + "°F";
@@ -82,7 +82,7 @@ function getWeather(city) {
             var lat = data.coord.lat;
             var lon = data.coord.lon;
             var fiveDayUrl =
-                "http://api.openweathermap.org/data/2.5/forecast?lat=" +
+                "https://api.openweathermap.org/data/2.5/forecast?lat=" +
                 lat +
                 "&lon=" +
                 lon +
@@ -115,7 +115,7 @@ function getWeather(city) {
                             var icon = document.createElement("img");
                             var iconCode = data.list[i].weather[0].icon;
                             var iconUrl =
-                                "http://openweathermap.org/img/w/" + iconCode + ".png";
+                                "https://openweathermap.org/img/w/" + iconCode + ".png";
                             icon.setAttribute("src", iconUrl);
                             icon.style.height = "50px";
                             icon.style.width = "50px";
